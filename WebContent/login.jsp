@@ -30,7 +30,7 @@
 	}
 	
 	function insertFunc() {
-		form.action = "views/insert.jsp";
+		form.action = "insert.jsp";
 		form.submit();
 	}
 </script>

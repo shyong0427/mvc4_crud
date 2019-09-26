@@ -31,10 +31,10 @@ public class UserServlet extends HttpServlet {
 			controller = getAction(command); //login.m2 받아옴
 			modelAndView = controller.execute(request, response); // LoginAction 수행
 			
-			// 파일 호출 방식 선택 후 forwarding
-			if(modelAndView.isRedirect()) {
+			// 파일 호출 방식 선택 후 처리
+			if(modelAndView.isRedirect()) { // Redirect 방식
 				response.sendRedirect(modelAndView.getViewName());
-			} else {
+			} else { // Forwarding 방식
 				RequestDispatcher dispatcher = request.getRequestDispatcher(modelAndView.getViewName());
 				
 				dispatcher.forward(request, response);
@@ -45,24 +45,15 @@ public class UserServlet extends HttpServlet {
 	}
 	
 	public Controller getAction(String command) throws Exception {
-		if(command.equals("login")) {
-			controller = new LoginAction();
-		}/*else if(command.equals("list")) {
-			
-		} else if(command.equals("logout")) {
-			
-		} else if(command.equals("insert")) {
-			
-		} else if(command.equals("view")) {
-			
-		} else if(command.equals("updateform")) {
-			
-		} else if(command.equals("update")) {
-			
-		} else if(command.equals("delete")) {
-			
-		}*/
-		
+		if(command.equals("login")) controller = new LoginAction();
+		else if(command.equals("list")) controller = new ListAction();
+		else if(command.equals("logout")) controller = new LogoutAction();
+		else if(command.equals("insert")) controller = new InsertAction();
+		else if(command.equals("view")) controller = new ViewAction();
+		else if(command.equals("updateform")) controller = new UpdateFormAction();
+		else if(command.equals("update")) controller = new ListAction();
+		else if(command.equals("delete")) controller = new ListAction();
+				
 		return controller;
 	}
 }
