@@ -39,7 +39,7 @@ public class UserManager { // 여러 개의 DAO 관리 목적
 		return getUserdaoModel().findUser(userid);
 	}
 	
-	public int delete(UserForm userid) {
+	public int delete(String userid) {
 		return getUserdaoModel().deleteData(userid);
 	}
 	

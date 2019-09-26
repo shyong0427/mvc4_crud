@@ -77,7 +77,7 @@ public class UserDaoModel {
 		return re;
 	}
 	
-	public int deleteData(UserForm userForm) {
+	public int deleteData(String userForm) {
 		int re = 0;
 		SqlSession session = factory.openSession();
 		
